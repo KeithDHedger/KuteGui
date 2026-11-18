@@ -13,3 +13,15 @@ configure
 depcomp
 install-sh
 missing
+.deps
+.dirstamp
+*.o
+Makefile
+config.h
+*.log
+config.status
+stamp-h1
+
+
+
+KUTEGui/app/kutegui
