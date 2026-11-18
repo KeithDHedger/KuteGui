@@ -1,0 +1,19 @@
+0.5.0
+Added context menu to list.
+Added default icons.
+Cleaned autotools files.
+Added copy tags to clipboard.
+Added 'About' menu.
+Added 'Help' menu.
+Added status bar.
+Added check for installed kute.
+Added write tags for all files.
+Added write tags.
+Added clear all tags.
+Added select all tags.
+Added menubar.
+Save last folder.
+Added *.m4a.
+
+0.0.0
+Internal release...

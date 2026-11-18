@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KUTEGui Help</title>
+<style>
+        body {
+            font-family: sans-serif;
+            color: #222;
+        }
+       h1 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 6px;
+        }
+        h2 {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 4px;
+            margin-top: 24px;
+        }-->
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 12px 0;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 6px 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        .note {
+            background-color: #f9f9f9;
+            border-left: 4px solid #666;
+            padding: 10px 14px;
+            margin: 14px 0;
+        }
+        a {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<h1>KUTEGui Help</h1>
+<p><strong>KUTEGui</strong> is a Qt-based graphical user interface frontend for the <strong>K.U.T.E.</strong> (Keith's Universal Tag Editor) command-line audio tagging utility.</p>
+
+<h2>Requirements &amp; Supported Formats</h2>
+<ul>
+    <li><strong>Backend Dependency:</strong> The <code>kute</code> command-line executable must be installed and available in your system <code>$PATH</code>. If missing, KUTEGui will exit with a message directing you to the K.U.T.E. repository.</li>
+    <li><strong>Supported Audio Formats:</strong> <code>.mp3</code>, <code>.m4a</code>, <code>.flac</code>, and <code>.mp4 ( video files )</code>.</li>
+</ul>
+
+<h2>Interface Overview</h2>
+<p>The main window consists of a menu bar, a quick-access toolbar, a tag editor section, a file list, and a status bar.</p>
+<br>
+
+<div align="center"><img src="main.png" alt="main" title="main"></div>
+
+<h3>Tag Fields</h3>
+<p>Each metadata tag row has three controls:</p>
+<ol>
+    <li><strong>Static Checkbox:</strong> When checked, the text in this field is locked. Selecting a different file in the list will not overwrite or clear the field's value, making it easy to apply shared metadata (such as <em>Artist</em>, <em>Album</em>, or <em>Year</em>) across multiple tracks.</li>
+    <li><strong>Tag Name Checkbox:</strong> Determines whether this specific tag will be included when writing tags to a file. All tag checkboxes are selected by default when KUTEGui starts.</li>
+    <li><strong>Text Input:</strong> Displays the current tag value read from the selected file and allows you to edit it.</li>
+</ol>
+
+<p><strong>Supported Metadata Tags:</strong></p>
+<table>
+    <thead>
+        <tr>
+            <th>Tag Label</th>
+            <th>CLI Option Passed to <code>kute</code></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Title</td><td><code>--title</code></td></tr>
+        <tr><td>Artist</td><td><code>--artist</code></td></tr>
+        <tr><td>Album</td><td><code>--album</code></td></tr>
+        <tr><td>Track</td><td><code>--track</code></td></tr>
+        <tr><td>Totaltracks</td><td><code>--total-tracks</code></td></tr>
+        <tr><td>CD</td><td><code>--cd</code></td></tr>
+        <tr><td>Genre</td><td><code>--genre</code></td></tr>
+        <tr><td>Year</td><td><code>--year</code></td></tr>
+        <tr><td>Compilation</td><td><code>--compilation</code></td></tr>
+        <tr><td>Composer</td><td><code>--composer</code></td></tr>
+        <tr><td>Comment</td><td><code>--comment</code></td></tr>
+        <tr><td>Discid</td><td><code>--discid</code></td></tr>
+    </tbody>
+</table>
+
+<h3>File List</h3>
+<ul>
+    <li>Displays loaded audio files sorted alphabetically by name.</li>
+    <li>Clicking or navigating to a file automatically queries its metadata via <code>kute -q</code> and populates all non-static fields.</li>
+    <li><strong>Context Menu (Right-Click):</strong> Right-clicking any file in the list lets you <strong>Copy Name</strong> (filename only) or <strong>Copy Path</strong> (full directory path and filename) to the clipboard.</li>
+</ul>
+
+<h2>Menus &amp; Toolbar Actions</h2>
+
+<h3>File Menu</h3>
+<ul>
+    <li><strong>Open File:</strong> Browse for and load a single supported audio file into the list.</li>
+    <li><strong>Open Folder:</strong> Select a directory to load all supported audio files inside it. KUTEGui remembers your last opened folder and window geometry between sessions.</li>
+    <li><strong>Copy Tags to Clipboard:</strong> Copies all current tag fields and their values to the system clipboard formatted as <code>TagName="Value"</code>.</li>
+    <li><strong>Quit:</strong> Saves your preferences and closes the application.</li>
+</ul>
+
+<h3>Tags Menu</h3>
+<ul>
+    <li><strong>Write Tags For File:</strong> Prompts for confirmation, then writes all checked tags to the currently selected file.</li>
+    <li><strong>Write Tags For All Files:</strong> Prompts for confirmation, then iterates through every file in the list and writes all checked tags to each file.</li>
+    <li><strong>Select All Tags:</strong> Checks the inclusion box for every tag field.</li>
+    <li><strong>De-Select All Tags:</strong> Unchecks the inclusion box for every tag field.</li>
+</ul>
+
+<div class="note">
+    <strong>Tip for Batch Tagging:</strong> To apply the same album, artist, or year to an entire folder without overwriting individual track titles or numbers, check <strong>Static</strong> on the shared tags, ensure only those shared tag checkboxes are checked (or use <em>De-Select All Tags</em> and re-check just the ones you want to update), and click <strong>Write Tags For All Files</strong>.
+</div>
+
+<h3>Help Menu</h3>
+<ul>
+    <li><strong>About:</strong> Displays version details, author credits, GPLv3 license text, and Qt framework information.</li>
+    <li><strong>Help:</strong> Opens this help documentation window.</li>
+</ul>
+
+<h2>Troubleshooting</h2>
+<ul>
+    <li><strong>Error Logs:</strong> Any standard error output generated by <code>kute</code> when writing tags is appended to <code>/tmp/kutegui-error.log</code>.</li>
+</ul>
+
+<h2>Links &amp; Copyright</h2>
+<p>
+    <strong>Author:</strong> K. D. Hedger (&copy; 2013&ndash;2026)<br>
+    <strong>License:</strong> GNU General Public License v3.0 (GPLv3)<br>
+    <strong>Project Repository:</strong> <a href="https://github.com/KeithDHedger/Kute">https://github.com/KeithDHedger/Kute</a><br>
+    <strong>Author Homepage:</strong> <a href="https://keithdhedger.github.io/">https://keithdhedger.github.io/</a><br>
+    <strong>Contact:</strong> <a href="mailto:kdhedger68713@gmail.com">kdhedger68713@gmail.com</a>
+</p>
+
+</body>
+</html>
