@@ -40,7 +40,8 @@ int main(int argv, char **args)
 			return(1);
 		}
  	app.setOrganizationDomain("KDHedger");
-	app.setApplicationName(PACKAGE_NAME);
+	app.setApplicationName("K.U.T.E. Gui");
+	app.setApplicationVersion(PACKAGE_VERSION);
 
 	QIcon::setThemeSearchPaths(QStringList()<<QString("%1/icons").arg(DATADIR)<<QString("/usr/share/icons")<<QString("%1/.icons").arg(getenv("HOME")));
 	QIcon::setFallbackSearchPaths(QStringList()<<QString("%1/icons").arg(DATADIR)<<QString("/usr/share/icons")<<QString("%1/.icons").arg(getenv("HOME")));
