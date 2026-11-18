@@ -207,7 +207,7 @@ QMenu* setHelpMenu(void)
 								}
 							about.credits=credits;
 
-							about.hpLabel->setText(QString("%1<br>%2<br>%3").arg("<a href=\"https://github.com/KeithDHedger/Kute\">K.U.T.E.</a>").arg("<a href=\"https://github.com/KeithDHedger/Kute\">K.U.T.E.Gui</a>").arg("<a href=\"https://keithdhedger.github.io/\">Homepage</a>"));
+							about.hpLabel->setText(QString("%1<br>%2<br>%3").arg("<a href=\"https://github.com/KeithDHedger/Kute\">K.U.T.E.</a>").arg("<a href=\"https://github.com/KeithDHedger/KuteGui\">K.U.T.E.Gui</a>").arg("<a href=\"https://keithdhedger.github.io/\">Homepage</a>"));
 
 							about.setBodyText("A GUI Frontend for K.U.T.E");
 							about.showAboutQtButton(true);
